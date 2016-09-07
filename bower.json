@@ -1,0 +1,26 @@
+{
+  "name": "easylottery",
+  "authors": [
+    "Thales Minussi <tminussi@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/main/resources/static/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.5.8",
+    "angular": "1.5.8",
+    "bootstrap-css": "^3.3.6",
+    "jquery": "^3.1.0",
+    "bootstrap": "3.3.7",
+    "components-font-awesome": "latest"
+  }
+}

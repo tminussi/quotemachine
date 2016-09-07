@@ -1,0 +1,22 @@
+body {
+    background-color: #ffa500;
+    color: #ffa500;
+    font-family: ubuntu;
+}
+.author {
+    margin-right: 60px;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    border-radius: 1%;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    position: relative;
+    margin: 17% auto auto auto;
+    display: table;
+}

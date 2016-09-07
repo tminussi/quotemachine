@@ -1,0 +1,20 @@
+<div ng-controller="quoteController">
+    <div class="row text-center vcenter">
+        <div class="col-xs-10 col-md-offset-1 jumbotron">
+            <h2><span class="fa fa-quote-left"></span>{{quote.text}}<span class="fa fa-quote-right"></span></h2>
+            <div class="row">
+                <div class="col-md-2 pull-right">
+                    <h4>{{quote.author}}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 pull-right">
+                    <button class="btn btn-primary pull-right" ng-click="getNewQuote()">Get a new amazing quote!</button>
+                </div>
+                <div class="col-md-4 pull-left">
+                    <a href="#"><i class="fa fa-twitter fa-3x"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
