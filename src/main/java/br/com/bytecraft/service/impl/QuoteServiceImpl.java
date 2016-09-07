@@ -39,12 +39,16 @@ public class QuoteServiceImpl implements QuoteService {
 
     @Override
     public Quote getRandomQuote() {
-        return repository.findOne((long) (new Random().nextInt(countQuotes() + 1) + 1));
+        return repository.findOne(Long.valueOf(getARandomWithinRange()));
+    }
+
+    private int getARandomWithinRange() {
+        return new Random().nextInt(countQuotes() + 1) + 1;
     }
 
     @Override
     public Integer countQuotes() {
-        return Math.toIntExact(repository.findAll().spliterator().getExactSizeIfKnown());
+        return Math.toIntExact(repository.count());
     }
 
 
