@@ -62,6 +62,7 @@ public class QuoteServiceImplTest {
     public void getRandomQuoteMustCallCorrectMethodOnce() {
         InOrder inOrder = inOrder(quoteRepository);
         doReturn(502l).when(quoteRepository).count();
+        
         quoteService.getRandomQuote();
 
         inOrder.verify(quoteRepository, atLeastOnce()).count();
