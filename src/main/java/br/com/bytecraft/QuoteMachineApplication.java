@@ -3,13 +3,13 @@ package br.com.bytecraft;
 import br.com.bytecraft.commons.CsvFileReader;
 import br.com.bytecraft.model.Quote;
 import br.com.bytecraft.service.QuoteService;
+import org.apache.commons.io.IOUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.ClassPathResource;
 
-import java.io.File;
+import java.io.*;
 import java.util.List;
 
 @SpringBootApplication
@@ -22,9 +22,13 @@ public class QuoteMachineApplication {
 	@Bean
 	public CommandLineRunner demo(QuoteService service) {
 		return (args) -> {
-			File file = new ClassPathResource("litemind-quotes.csv").getFile();
-			List<Quote> quotes = CsvFileReader.readCsvFile(file);
-			service.saveAllQuotes(quotes);
+			ClassLoader classLoader = this.getClass().getClassLoader();
+			InputStream	inputStream = classLoader.getResourceAsStream("litemind-quotes.csv");
+			File file = new File("quotes.csv");
+			OutputStream outputStream = new FileOutputStream(file);
+			IOUtils.copy(inputStream, outputStream);
+			outputStream.close();
+			service.saveAllQuotes(CsvFileReader.readCsvFile(file));
 		};
 	}
 }
