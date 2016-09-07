@@ -16,7 +16,7 @@ public class QuoteController {
 
     @RequestMapping(value = "quotes", method = RequestMethod.GET)
     public Quote findOne() {
-        return service.findOne(1l);
+        return service.getRandomQuote();
     }
 
 }

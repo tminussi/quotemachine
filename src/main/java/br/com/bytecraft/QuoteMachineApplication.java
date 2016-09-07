@@ -1,11 +1,16 @@
 package br.com.bytecraft;
 
+import br.com.bytecraft.commons.CsvFileReader;
 import br.com.bytecraft.model.Quote;
 import br.com.bytecraft.service.QuoteService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+
+import java.io.File;
+import java.util.List;
 
 @SpringBootApplication
 public class QuoteMachineApplication {
@@ -17,11 +22,9 @@ public class QuoteMachineApplication {
 	@Bean
 	public CommandLineRunner demo(QuoteService service) {
 		return (args) -> {
-			Quote quote = new Quote();
-			quote.setText("Lorem Ipsum is the best bla bla bla generator ever");
-			quote.setAuthor("Thales");
-
-			service.save(quote);
+			File file = new ClassPathResource("litemind-quotes.csv").getFile();
+			List<Quote> quotes = CsvFileReader.readCsvFile(file);
+			service.saveAllQuotes(quotes);
 		};
 	}
 }

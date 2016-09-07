@@ -12,9 +12,18 @@ public class Quote {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "text")
+    @Column(name = "text", length = 400)
     private String text;
 
     @Column(name = "author")
     private String author;
+
+    public Quote() {
+
+    }
+
+    public Quote(String text, String author) {
+        this.text = text;
+        this.author = author;
+    }
 }
